@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import pokemonFeature from '../features/pokemon';
 import _ from 'lodash';
 import SearchComponent from './SearchComponent';
@@ -25,7 +22,7 @@ class Home extends Component {
                     {!_.isEmpty(pokemons) && pokemons.map(pokemon => {
                         const id = _.toInteger(pokemon.Number);
                         return <Link to={`/pokemon/${id}`}>
-                                <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} />
+                                <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
                             </Link>
                     })}
                 </div>

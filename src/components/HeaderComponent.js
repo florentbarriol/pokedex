@@ -6,7 +6,7 @@ class HeaderComponent extends Component {
     render() {
         return (
             <AppBar
-                title="Title"
+                title="Pokedex"
             />
         );
     }
