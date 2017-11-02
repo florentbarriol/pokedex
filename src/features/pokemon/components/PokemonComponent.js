@@ -39,7 +39,7 @@ class PokemonComponent extends Component {
                     <PokemonEvolutionsComponent
                         id={id}
                         evolutions={_.concat(_.toArray(pokemon.PreviousEvolutions), [pokemon], _.toArray(pokemon.NextEvolutions))} />
-                    <PokemonWeakResistantComponent />
+                    <PokemonWeakResistantComponent resistant={pokemon.Resistant} weakness={pokemon.Weaknesses} />
                 </div>
             ) : (
                     <div>Chargement...</div>
