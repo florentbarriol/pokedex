@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import pokemonFeature from '../features/pokemon';
-import HeaderComponent from './header/HeaderComponent';
+import HeaderComponent from './HeaderComponent';
+import FooterComponent from './FooterComponent';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import 'normalize.css';
+import '../scss/main.scss';
 
 class App extends Component {
 
-    componentWillMount() {
-        this.props.dispatch(pokemonFeature.actions.fetchPokemons());
-    }
-
     render() {
         return (
-            <div className="app">
-                <HeaderComponent />
-                {this.props.children}
-                <footer>footer</footer>
-            </div>
+            <MuiThemeProvider>
+                <div className="app flex-container-v">
+                    <HeaderComponent />
+                    {this.props.children}
+                    <FooterComponent/>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }

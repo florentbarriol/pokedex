@@ -1,61 +1,49 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import pokemonFeature from '../';
+import { CardActions  } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import PokemonImageComponent from './PokemonImageComponent';
+import PokemonAttacksComponent from './PokemonAttacksComponent';
+import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
 
 class PokemonComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: props.id
-        }
-    }
-
-    componentDidMount() {
-        this._loadPokemonDetails(this.state);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.state.id !== nextProps.id) {
-            console.log(this.state.id, nextProps.id)
-            //this._loadPokemonDetails(nextProps);
-        }
-    }
-
-    _loadPokemonDetails({ id }) {
-        this.props.dispatch(pokemonFeature.actions.fetchPokemonDetails(id));
-    }
 
     render() {
-        const { pokemonDetail, id, loading } = this.props;
+        const { pokemon } = this.props;
+        const id = pokemon && pokemon.Number ? _.toInteger(pokemon.Number) : -1;
         return (
-            <div className="pokemon">
-                {loading || _.isEmpty(pokemonDetail) ? (
-                    <p>Chargement...</p>
-                ) : (
-                        <p>
-                            Pokemon id : {id}<br />
-                            <img src={pokemonDetail.sprites.front_default} alt={pokemonDetail.name} />
-                            {pokemonDetail ? pokemonDetail.name : 'NaN'}
-                        </p>
-                    )}
-            </div>
+            pokemon && id ? (
+                <div>
+                    <article className="grid-2 has-gutter">
+                        <div className="txtcenter">
+                            <PokemonImageComponent id={id} alt={pokemon.Name} />
+                        </div>
+                        <div>
+                            <h1>{pokemon.Name}</h1>
+                            <p>{`types : ${pokemon.Types.map(t => '  ' + t)}`}</p>
+                            <p>{pokemon.About}</p>
+                            <CardActions>
+                                    <RaisedButton label="Add to comparator" primary />
+                            </CardActions>
+
+                        </div>
+                    </article>
+                    <PokemonAttacksComponent attacks={_.concat(pokemon.FastAttacks, pokemon.SpecialAttacks)} />
+                    <PokemonEvolutionsComponent
+                        id={id}
+                        evolutions={_.concat(_.toArray(pokemon.PreviousEvolutions), _.toArray(pokemon.NextEvolutions))} />
+                </div>
+            ) : (
+                <div>Chargement...</div>
+            )
         );
     }
-}
 
-const mapStateToProps = (state, ownProps) => {
-    const { id } = ownProps;
-    return {
-        pokemonDetail: _.toPlainObject(state.pokemon.details.data[id]),
-        loading: state.pokemon.details.loading
-    }
 }
 
 PokemonComponent.PropTypes = {
-    id: PropTypes.number.isRequired,
-    pokemon: PropTypes.object
+    pokemon: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps)(PokemonComponent);
+export default PokemonComponent;

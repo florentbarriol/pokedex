@@ -1,1 +1,1 @@
-export const POKEAPI_ROOT = '/api/v2';
+export const POKEAPI_ROOT = 'https://pokeapi.co/api/v2';

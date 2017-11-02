@@ -1,6 +1,4 @@
 import { POKEAPI_ROOT } from '../constants';
-import { Pokedex } from 'pokeapi-js-wrapper';console.log(new Pokedex(), new Pokedex().resource())
-const P = new Pokedex();
 
 export function callAPIMiddleware({ dispatch, getState }) {
     return next => action => {
@@ -40,7 +38,7 @@ export function callAPIMiddleware({ dispatch, getState }) {
             })
         )
 
-        return Pokedex.resource(`${POKEAPI_ROOT}${endpoint}`).then(response => response.json()).then(
+        return fetch(`${POKEAPI_ROOT}${endpoint}`).then(response => response.json()).then(
             response =>
                 dispatch(
                     Object.assign({}, payload, {

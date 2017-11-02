@@ -1,3 +1,6 @@
 import PokemonPage from './PokemonPage';
 import PokemonComponent from './PokemonComponent';
-export { PokemonComponent, PokemonPage };
+import PokemonImageComponent from './PokemonImageComponent';
+import PokemonAttacksComponent from './PokemonAttacksComponent';
+import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
+export { PokemonComponent, PokemonPage, PokemonImageComponent, PokemonAttacksComponent, PokemonEvolutionsComponent };

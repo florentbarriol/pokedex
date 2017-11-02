@@ -1,10 +1,5 @@
 export const NAME = 'pokemon';
 
-export const REQUEST_POKEMONS = "REQUEST_POKEMONS";
-export const RECEIVE_POKEMONS = "RECEIVE_POKEMONS";
-export const FAILURE_POKEMONS = "FAILURE_POKEMONS";
-
-
-export const REQUEST_POKEMON_DETAILS = "REQUEST_POKEMON_DETAILS";
-export const RECEIVE_POKEMON_DETAILS = "RECEIVE_POKEMON_DETAILS";
-export const FAILURE_POKEMON_DETAILS = "FAILURE_POKEMON_DETAILS";
+export const EXT_IMG_POKEMON = ".png";
+export const PATH_LARGE_IMG_POKEMON = '../../../img/pokemon/other-sprites/official-artwork/';
+export const PATH_SMALL_IMG_POKEMON = '../../../img/pokemon/';

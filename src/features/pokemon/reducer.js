@@ -1,10 +1,4 @@
-import { combineReducers } from 'redux';
-import { pokemonReducer } from './reducers/pokemonReducer';
-import { pokemonDetailsReducer } from './reducers/pokemonDetailsReducer';
+import { createReducer } from '../../utils';
+import pokemons from './pokemons.json';
 
-
-
-export const reducer = combineReducers({
-    listing: pokemonReducer,
-    details: pokemonDetailsReducer
-});
+export const reducer = createReducer({ pokemons }, {});
