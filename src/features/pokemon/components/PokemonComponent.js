@@ -6,7 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import PokemonImageComponent from './PokemonImageComponent';
 import PokemonAttacksComponent from './PokemonAttacksComponent';
 import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
-import PokemonWeakResistantComponent from './PokemonWeakResistantComponent';
+import PokemonResistantComponent from './PokemonResistantComponent';
+import PokemonWeaknessComponent from './PokemonWeaknessComponent';
 
 class PokemonComponent extends Component {
 
@@ -28,6 +29,12 @@ class PokemonComponent extends Component {
                             <p>{`generation : ${pokemon.Generation}`}</p>
                             <p>{`maximum HP : ${pokemon.MaxHP}`}</p>
                             <p>{`maximum CP : ${pokemon.MaxCP}`}</p>
+                            <div>
+                                <PokemonResistantComponent resistant={pokemon.Resistant} />
+                            </div>
+                            <div>
+                                <PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
+                            </div>
                             <p>{pokemon.About}</p>
                             <CardActions>
                                 <RaisedButton label="Add to comparator" primary />
@@ -39,7 +46,6 @@ class PokemonComponent extends Component {
                     <PokemonEvolutionsComponent
                         id={id}
                         evolutions={_.concat(_.toArray(pokemon.PreviousEvolutions), [pokemon], _.toArray(pokemon.NextEvolutions))} />
-                    <PokemonWeakResistantComponent resistant={pokemon.Resistant} weakness={pokemon.Weaknesses} />
                 </div>
             ) : (
                     <div>Chargement...</div>

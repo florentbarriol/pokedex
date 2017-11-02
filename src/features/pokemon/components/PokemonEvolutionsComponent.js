@@ -10,20 +10,10 @@ import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
 import PokemonImageComponent from './PokemonImageComponent';
 import _ from 'lodash';
 
-const StepLabelCustom = ({ id, evolutionId, link }) => {
+const StepLabelCustom = (props) => {
     return <StepLabel>
-        <PokemonImageComponent id={evolutionId} />
+        <PokemonImageComponent {...props} />
     </StepLabel>
-}
-
-const StepLabelLinkWrapp = (StepLabelCustom) => (props) => {
-    if (props.link) {
-        return <StepLabelCustom { ...props} />;
-    } else {
-        return <Link to={props.id !== props.evolutionId ? `/pokemon/${props.evolutionId}` : ''}>
-            <StepLabelCustom { ...props} />
-        </Link>
-    }
 }
 
 class PokemonEvolutionsComponent extends Component {
@@ -37,7 +27,13 @@ class PokemonEvolutionsComponent extends Component {
                     {evolutions.map((e, i) => {
                         const evolutionId = _.toInteger(e.Number);
                         return <Step key={i} active={id === evolutionId}>
-                            StepLabelLinkWrapp(StepLabelCustom);
+                            {id === evolutionId ? (
+                                <StepLabelCustom id={evolutionId} />
+                            ) : (
+                                    <Link to={id !== evolutionId ? `/pokemon/${evolutionId}` : ''}>
+                                        <StepLabelCustom id={evolutionId} />
+                                    </Link>
+                                )}
                         </Step>
                     })}
                 </Stepper>
