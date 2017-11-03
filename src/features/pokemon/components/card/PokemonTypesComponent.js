@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PokemonTypesChipList from './PokemonTypesChipList';
+import * as pokemonComponents from '../';
 
 class PokemonTypesComponent extends Component {
 
@@ -8,7 +8,7 @@ class PokemonTypesComponent extends Component {
         const { types } = this.props;
         return (
             <section>
-                <PokemonTypesChipList
+                <pokemonComponents.PokemonTypesChipList
                     label="Types"
                     types={types}
                 />

@@ -1,14 +1,16 @@
 import PokemonPage from './PokemonPage';
-import PokemonComponent from './PokemonComponent';
 import PokemonImageComponent from './PokemonImageComponent';
-import PokemonAttacksComponent from './PokemonAttacksComponent';
-import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
-import PokemonResistantComponent from './PokemonResistantComponent';
-import PokemonWeaknessComponent from './PokemonWeaknessComponent';
 import PokemonTypesChipList from './PokemonTypesChipList';
-import PokemonTypesComponent from './PokemonTypesComponent';
+
+import PokemonCardComponent from './card/PokemonCardComponent';
+import PokemonAttacksComponent from './card/PokemonAttacksComponent';
+import PokemonEvolutionsComponent from './card/PokemonEvolutionsComponent';
+import PokemonResistantComponent from './card/PokemonResistantComponent';
+import PokemonWeaknessComponent from './card/PokemonWeaknessComponent';
+import PokemonTypesComponent from './card/PokemonTypesComponent';
+
 export {
-    PokemonComponent, PokemonPage, PokemonImageComponent, PokemonAttacksComponent,
+    PokemonCardComponent, PokemonPage, PokemonImageComponent, PokemonAttacksComponent,
     PokemonEvolutionsComponent, PokemonResistantComponent, PokemonWeaknessComponent,
-     PokemonTypesChipList, PokemonTypesComponent
+    PokemonTypesChipList, PokemonTypesComponent
 };

@@ -13,7 +13,7 @@ class PokemonPage extends Component {
         const pokemon = _.filter(pokemons, p => _.toInteger(id) === _.toInteger(p.Number))[0];
         return (
             <main>
-                <pokemonFeature.components.PokemonComponent pokemon={pokemon} />
+                <pokemonFeature.components.PokemonCardComponent pokemon={pokemon} />
                 <div className="mtm mbm">
                     <Link to="/">
                         <RaisedButton label="Retour" fullWidth />

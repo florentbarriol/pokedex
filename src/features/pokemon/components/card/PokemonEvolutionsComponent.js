@@ -7,12 +7,12 @@ import {
     StepLabel,
 } from 'material-ui/Stepper';
 import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
-import PokemonImageComponent from './PokemonImageComponent';
+import * as pokemonComponents from '../';
 import _ from 'lodash';
 
 const StepLabelCustom = (props) => {
     return <StepLabel>
-        <PokemonImageComponent {...props} />
+        <pokemonComponents.PokemonImageComponent {...props} />
     </StepLabel>
 }
 

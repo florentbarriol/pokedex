@@ -5,6 +5,9 @@ html, body, .app {
     width:100%;
     font-size:16px;
 }
+.appBar h1 {
+    cursor: pointer;
+}
 main {
     width: 90%;
     margin:4rem auto 0;

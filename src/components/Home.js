@@ -7,7 +7,7 @@ import SearchComponent from './SearchComponent';
 
 class Home extends Component {
 
-    handleOnNewRequest(value){
+    handleOnNewRequest(value) {
         // todo
     }
 
@@ -21,9 +21,9 @@ class Home extends Component {
                 <div className="grid-8">
                     {!_.isEmpty(pokemons) && pokemons.map(pokemon => {
                         const id = _.toInteger(pokemon.Number);
-                        return <Link to={`/pokemon/${id}`}>
-                                <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
-                            </Link>
+                        return <Link to={`/pokemon/${id}`} key={id}>
+                            <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
+                        </Link>
                     })}
                 </div>
             </main>

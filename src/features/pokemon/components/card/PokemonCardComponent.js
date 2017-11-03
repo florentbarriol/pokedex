@@ -3,12 +3,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import PokemonImageComponent from './PokemonImageComponent';
-import PokemonAttacksComponent from './PokemonAttacksComponent';
-import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
-import PokemonResistantComponent from './PokemonResistantComponent';
-import PokemonWeaknessComponent from './PokemonWeaknessComponent';
-import PokemonTypesComponent from './PokemonTypesComponent';
+import * as pokemonComponents from '../';
 
 class PokemonComponent extends Component {
 
@@ -20,18 +15,18 @@ class PokemonComponent extends Component {
                 <div>
                     <article className="grid-2 has-gutter">
                         <div className="txtcenter">
-                            <PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
+                            <pokemonComponents.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
                         </div>
                         <div>
                             <h1>{pokemon.Name}</h1>
-                            <PokemonTypesComponent types={pokemon.Types} />
+                            <pokemonComponents.PokemonTypesComponent types={pokemon.Types} />
                             <p>{`weight : ${pokemon.Weight.Minimum} to ${pokemon.Weight.Maximum}`}</p>
                             <p>{`height : ${pokemon.Height.Minimum} to ${pokemon.Height.Maximum}`}</p>
                             <p>{`generation : ${pokemon.Generation}`}</p>
                             <p>{`maximum HP : ${pokemon.MaxHP}`}</p>
                             <p>{`maximum CP : ${pokemon.MaxCP}`}</p>
-                            <PokemonResistantComponent resistant={pokemon.Resistant} />
-                            <PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
+                            <pokemonComponents.PokemonResistantComponent resistant={pokemon.Resistant} />
+                            <pokemonComponents.PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
                             <p>{pokemon.About}</p>
                             <CardActions>
                                 <RaisedButton label="Add to comparator" primary />
@@ -39,8 +34,8 @@ class PokemonComponent extends Component {
 
                         </div>
                     </article>
-                    <PokemonAttacksComponent attacks={_.concat(pokemon.FastAttacks, pokemon.SpecialAttacks)} />
-                    <PokemonEvolutionsComponent
+                    <pokemonComponents.PokemonAttacksComponent attacks={_.concat(pokemon.FastAttacks, pokemon.SpecialAttacks)} />
+                    <pokemonComponents.PokemonEvolutionsComponent
                         id={id}
                         evolutions={_.concat(_.toArray(pokemon.PreviousEvolutions), [pokemon], _.toArray(pokemon.NextEvolutions))} />
                 </div>

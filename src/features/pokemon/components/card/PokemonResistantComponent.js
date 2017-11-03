@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PokemonTypesChipList from './PokemonTypesChipList';
+import * as pokemonComponents from '../';
 import { green200, green500 } from 'material-ui/styles/colors';
 
 class PokemonResistantComponent extends Component {
@@ -9,7 +9,7 @@ class PokemonResistantComponent extends Component {
         const { resistant } = this.props;
         return (
             <section className="flex-container">
-                <PokemonTypesChipList
+                <pokemonComponents.PokemonTypesChipList
                     label="Resistant"
                     types={resistant}
                     chipColor={green200}
