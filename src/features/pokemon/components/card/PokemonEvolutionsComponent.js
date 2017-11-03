@@ -21,23 +21,25 @@ class PokemonEvolutionsComponent extends Component {
     render() {
         const { evolutions, id } = this.props;
         return (
-            <section>
-                <h2>Evolutions</h2>
-                <Stepper connector={<ArrowForwardIcon />}>
-                    {evolutions.map((e, i) => {
-                        const evolutionId = _.toInteger(e.Number);
-                        return <Step key={i} active={id === evolutionId}>
-                            {id === evolutionId ? (
-                                <StepLabelCustom id={evolutionId} />
-                            ) : (
-                                    <Link to={id !== evolutionId ? `/pokemon/${evolutionId}` : ''}>
-                                        <StepLabelCustom id={evolutionId} />
-                                    </Link>
-                                )}
-                        </Step>
-                    })}
-                </Stepper>
-            </section>
+             evolutions.length > 1 && (
+                <section>
+                    <h2>Evolutions</h2>
+                    <Stepper connector={<ArrowForwardIcon />}>
+                        {evolutions.map((e, i) => {
+                            const evolutionId = _.toInteger(e.Number);
+                            return <Step key={i} active={id === evolutionId}>
+                                {id === evolutionId ? (
+                                    <StepLabelCustom id={evolutionId} />
+                                ) : (
+                                        <Link to={id !== evolutionId ? `/pokemon/${evolutionId}` : ''}>
+                                            <StepLabelCustom id={evolutionId} />
+                                        </Link>
+                                    )}
+                            </Step>
+                        })}
+                    </Stepper>
+                </section>
+            )
         );
     }
 }

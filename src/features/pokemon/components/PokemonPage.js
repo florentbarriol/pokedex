@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import pokemonFeature from '../';
 import _ from 'lodash';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -15,9 +15,10 @@ class PokemonPage extends Component {
             <main>
                 <pokemonFeature.components.PokemonCardComponent pokemon={pokemon} />
                 <div className="mtm mbm">
-                    <Link to="/">
-                        <RaisedButton label="Retour" fullWidth />
-                    </Link>
+                    <RaisedButton
+                        label="Go back"
+                        fullWidth
+                        onClick={() => browserHistory.goBack()} />
                 </div>
             </main>
         );

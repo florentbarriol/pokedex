@@ -8,6 +8,16 @@ import routes from './routes';
 
 const store = configureStore();
 
+browserHistory.listen(location => {
+    // Use setTimeout to make sure this runs after React Router's own listener
+    setTimeout(() => {
+        if (location.action === 'POP') {
+            return;
+        }
+        window.scrollTo(0, 0);
+    });
+});
+
 render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes} />
