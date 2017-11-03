@@ -8,6 +8,7 @@ import PokemonAttacksComponent from './PokemonAttacksComponent';
 import PokemonEvolutionsComponent from './PokemonEvolutionsComponent';
 import PokemonResistantComponent from './PokemonResistantComponent';
 import PokemonWeaknessComponent from './PokemonWeaknessComponent';
+import PokemonTypesComponent from './PokemonTypesComponent';
 
 class PokemonComponent extends Component {
 
@@ -23,18 +24,14 @@ class PokemonComponent extends Component {
                         </div>
                         <div>
                             <h1>{pokemon.Name}</h1>
-                            <p>{`types : ${pokemon.Types.map(t => '  ' + t)}`}</p>
+                            <PokemonTypesComponent types={pokemon.Types} />
                             <p>{`weight : ${pokemon.Weight.Minimum} to ${pokemon.Weight.Maximum}`}</p>
                             <p>{`height : ${pokemon.Height.Minimum} to ${pokemon.Height.Maximum}`}</p>
                             <p>{`generation : ${pokemon.Generation}`}</p>
                             <p>{`maximum HP : ${pokemon.MaxHP}`}</p>
                             <p>{`maximum CP : ${pokemon.MaxCP}`}</p>
-                            <div>
-                                <PokemonResistantComponent resistant={pokemon.Resistant} />
-                            </div>
-                            <div>
-                                <PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
-                            </div>
+                            <PokemonResistantComponent resistant={pokemon.Resistant} />
+                            <PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
                             <p>{pokemon.About}</p>
                             <CardActions>
                                 <RaisedButton label="Add to comparator" primary />

@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Chip from 'material-ui/Chip';
-import Avatar from 'material-ui/Avatar';
-import FontIcon from 'material-ui/FontIcon';
 
+const styles = {
+    chip: {
+        margin: '.25rem',
+    }
+}
 
 class PokemonTypesChipList extends Component {
 
     render() {
-        const { types, chipColor, avatarColor, label } = this.props;
+        const { types, chipColor, label } = this.props;
         return (
-            <div className="flex-container flex-center-alt">
+            <div className="flex-container flex-center-alt types">
                 {label} :
                 {types.map((type, i) => {
                     return (
                         <Chip
                             key={`${type}-${i}`}
                             labelColor="#fff"
-                            backgroundColor={chipColor}>
-                            <Avatar
-                                icon={<FontIcon className="material-icons muidocs-icon-action-home" />}
-                                backgroundColor={avatarColor}
-                            />
+                            backgroundColor={chipColor}
+                            style={styles.chip}
+                        >
                             {type}
                         </Chip>);
                 })}
@@ -31,7 +32,9 @@ class PokemonTypesChipList extends Component {
 }
 
 PokemonTypesChipList.PropTypes = {
-    resistant: PropTypes.array.isRequired
+    types: PropTypes.array.isRequired,
+    label: PropTypes.string.isRequired,
+    chipColor: PropTypes
 }
 
 export default PokemonTypesChipList;
