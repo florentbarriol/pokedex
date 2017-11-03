@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -19,7 +20,9 @@ class HeaderComponent extends Component {
     render() {
         return (
             <AppBar
+                className="appBar"
                 title="Pokedex"
+                onTitleTouchTap={() => browserHistory.push('/')}
                 onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
             >
                 <Drawer
@@ -28,9 +31,9 @@ class HeaderComponent extends Component {
                     onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
                     className="drawer"
                 >
-                    <AppBar title="Pokedex" showMenuIconButton={false}/>
-                    <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+                    <AppBar title="Pokedex" showMenuIconButton={false} />
+                    <MenuItem onClick={() => browserHistory.push('/')}>Pokemons List</MenuItem>
+                    <MenuItem onClick={() => { browserHistory.push('/about') }}>About</MenuItem>
                 </Drawer>
             </AppBar>
         );
