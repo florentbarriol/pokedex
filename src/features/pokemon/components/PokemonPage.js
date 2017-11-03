@@ -10,7 +10,7 @@ class PokemonPage extends Component {
     render() {
         const { id } = this.props.routeParams;
         const { pokemons } = this.props;
-        const pokemon = _.filter(pokemons, p => _.toInteger(id) === _.toInteger(p.Number))[0];
+        const pokemon = pokemons.filter(p => _.toInteger(id) === _.toInteger(p.Number))[0];
         return (
             <main>
                 <pokemonFeature.components.PokemonCardComponent pokemon={pokemon} />

@@ -1,29 +1,18 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import _ from "lodash";
-import AutoComplete from "material-ui/AutoComplete";
+import TextField from 'material-ui/TextField';
 
 class SearchComponent extends Component {
 
     render() {
-        const { pokemons, onNewRequest } = this.props;
-        const data = _.reduce(pokemons, (res, val) => {
-            res.push(val.Name);
-            return res;
-        }, []);
+        const { onChange } = this.props;
+
         return (
             <div className="search">
-                <AutoComplete
-                    floatingLabelText="Search your pokemon"
-                    filter={AutoComplete.fuzzyFilter}
-                    dataSource={data}
-                    maxSearchResults={5}
+                <TextField
+                    floatingLabelText="Search a pokemon"
+                    onChange={(event, input) => onChange(input)}
                     fullWidth
-                    onNewRequest={chosenReq => {
-                        console.log(chosenReq);
-                        onNewRequest(chosenReq);
-                    }}
                 />
             </div>
         );
@@ -32,13 +21,7 @@ class SearchComponent extends Component {
 
 SearchComponent.PropTypes = {
     pokemons: PropTypes.array.isRequired,
-    onNewRequest: PropTypes.func
+    onChange: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
-    return {
-        pokemons: state.pokemon.pokemons
-    };
-};
-
-export default connect(mapStateToProps)(SearchComponent);
+export default SearchComponent;

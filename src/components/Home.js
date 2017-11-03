@@ -7,19 +7,29 @@ import SearchComponent from './SearchComponent';
 
 class Home extends Component {
 
-    handleOnNewRequest(value) {
-        // todo
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: ''
+        }
+    }
+
+    onChangeSearch(query) {
+        this.setState({ query });
     }
 
     render() {
+
         const { pokemons } = this.props;
+        const pokemonFiltered = this.state.query ? pokemons.filter(pokemon => _.startsWith(_.toLower(pokemon.Name), this.state.query)) : pokemons;
+
         return (
             <main>
                 <SearchComponent
-                    onNewRequest={this.handleOnNewRequest.bind(this)}
+                    onChange={this.onChangeSearch.bind(this)}
                 />
                 <div className="grid-8">
-                    {!_.isEmpty(pokemons) && pokemons.map(pokemon => {
+                    {!_.isEmpty(pokemonFiltered) && pokemonFiltered.map(pokemon => {
                         const id = _.toInteger(pokemon.Number);
                         return <Link to={`/pokemon/${id}`} key={id}>
                             <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />

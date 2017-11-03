@@ -14,12 +14,15 @@ main {
 }
 
 .search {
-    width:90%;
-    margin:auto;
+    width:50%;
+    margin:0 auto 4rem;
+}
+.search label {
+    margin:0;
 }
 
 footer.footer {
-        margin:auto auto 0;
+    margin:auto auto 0;
     padding: 2rem 0;
 }
 
