@@ -4,14 +4,17 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
-import headerFeature from '../';
+import { hideSideMenu, toggleSideMenu } from '../../actions';
+import { ComparatorBadgeComponent } from '../';
 
 class HeaderComponent extends Component {
 
-    handleToggle = () => this.props.dispatch(headerFeature.actions.toggleSideMenu());
+    handleToggle = () => this.props.dispatch(toggleSideMenu());
+
+    onClickComparatorButton = () => browserHistory.push('/pokemon/comparator');
 
     onClickMenuItem = (path) => {
-        this.props.dispatch(headerFeature.actions.hideSideMenu());
+        this.props.dispatch(hideSideMenu());
         setTimeout(() => {
             browserHistory.push(path);
         }, 1);
@@ -25,6 +28,8 @@ class HeaderComponent extends Component {
                 title="Pokedex"
                 onTitleTouchTap={this.onClickMenuItem.bind(this, '/')}
                 onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
+                iconElementRight={<ComparatorBadgeComponent />}
+                onRightIconButtonTouchTap={this.onClickComparatorButton.bind(this)}
             >
                 <Drawer
                     docked={false}
@@ -42,7 +47,7 @@ class HeaderComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        stateSideMenu: state.header.stateSideMenu
+        stateSideMenu: state.stateSideMenu
     }
 }
 

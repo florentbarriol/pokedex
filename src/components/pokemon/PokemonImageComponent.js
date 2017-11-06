@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import pokemonFeature from '../';
+import { PATH_LARGE_IMG_POKEMON, PATH_SMALL_IMG_POKEMON, EXT_IMG_POKEMON } from '../../constants';
 
 
 class PokemonImageComponent extends Component {
 
     render() {
         const { id, alt, isLarge } = this.props;
-        const { constants } = pokemonFeature;
         return <img
-            src={`${isLarge ? constants.PATH_LARGE_IMG_POKEMON : constants.PATH_SMALL_IMG_POKEMON}${id}${constants.EXT_IMG_POKEMON}`} alt={alt} />;
+            src={`${isLarge ? PATH_LARGE_IMG_POKEMON : PATH_SMALL_IMG_POKEMON}${id}${EXT_IMG_POKEMON}`} alt={alt} />;
     }
 
 }

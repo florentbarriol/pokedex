@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import pokemonFeature from '../';
+import * as components from '../';
 import _ from 'lodash';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -13,7 +13,7 @@ class PokemonPage extends Component {
         const pokemon = pokemons.filter(p => _.toInteger(id) === _.toInteger(p.Number))[0];
         return (
             <main>
-                <pokemonFeature.components.PokemonCardComponent pokemon={pokemon} />
+                <components.PokemonCardComponent pokemon={pokemon} />
                 <div className="mtm mbm">
                     <RaisedButton
                         label="Go back"
@@ -28,7 +28,7 @@ class PokemonPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        pokemons: state.pokemon.pokemons
+        pokemons: state.pokemons
     }
 }
 

@@ -1,19 +1,18 @@
-import rootReducer from './rootReducer';
+import { reducer } from './reducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
-import { callAPIMiddleware } from './middleware/api';
 
 
 export default function configureStore(initialState) {
-    let middlewares = [callAPIMiddleware, thunk];
+    let middlewares = [thunk];
 
     if (process.env.NODE_ENV !== 'production') {
         middlewares = [...middlewares, logger];
     }
 
     const store = createStore(
-        rootReducer,
+        reducer,
         initialState,
         applyMiddleware(...middlewares)
     );

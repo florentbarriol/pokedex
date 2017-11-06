@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import pokemonFeature from '../features/pokemon';
 import _ from 'lodash';
-import SearchComponent from './SearchComponent';
+import * as components from './'
 
 class Home extends Component {
 
@@ -25,14 +24,14 @@ class Home extends Component {
 
         return (
             <main>
-                <SearchComponent
+                <components.SearchComponent
                     onChange={this.onChangeSearch.bind(this)}
                 />
                 <div className="grid-8">
                     {!_.isEmpty(pokemonFiltered) && pokemonFiltered.map(pokemon => {
                         const id = _.toInteger(pokemon.Number);
                         return <Link to={`/pokemon/${id}`} key={id}>
-                            <pokemonFeature.components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
+                            <components.PokemonImageComponent id={id} alt={pokemon.Name} isLarge />
                         </Link>
                     })}
                 </div>
@@ -43,7 +42,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        pokemons: state.pokemon.pokemons
+        pokemons: state.pokemons
     }
 }
 
