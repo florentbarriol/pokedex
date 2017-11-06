@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
@@ -11,15 +12,17 @@ class ComparatorBadgeComponent extends Component {
         const { nbPokemonsInComparator } = this.props;
         return (
             nbPokemonsInComparator ? (
-                <Badge
-                    badgeContent={nbPokemonsInComparator}
-                    secondary
-                    badgeStyle={{ top: 24, right: 24 }}
-                >
-                    <IconButton tooltip="Compare your choice">
-                        <NotificationsIcon />
-                    </IconButton>
-                </Badge>) : (null)
+                <Link to="/pokemon/comparator">
+                    <Badge
+                        badgeContent={nbPokemonsInComparator}
+                        secondary
+                        badgeStyle={{ top: 24, right: 24 }}
+                    >
+                        <IconButton tooltip="Compare your choice">
+                            <NotificationsIcon />
+                        </IconButton>
+                    </Badge>
+                </Link>) : (null)
         );
     }
 }

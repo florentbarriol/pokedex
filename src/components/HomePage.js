@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import * as components from './'
 
-class Home extends Component {
+class HomePage extends Component {
 
     constructor(props) {
         super(props);
@@ -46,4 +46,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(HomePage);

@@ -5,8 +5,9 @@ import * as components from './components';
 
 export default (
     <Route path="/" component={App}>
-    <IndexRoute component={components.HomePage}/>
-    <Route path="about" component={components.AboutPage}/>
+        <IndexRoute component={components.HomePage} />
+        <Route path="about" component={components.AboutPage} />
+        <Route path="pokemon/comparator" component={components.ComparatorPage} />
         <Route
             path="pokemon/:id"
             component={components.PokemonPage} />

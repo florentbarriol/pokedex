@@ -11,8 +11,6 @@ class HeaderComponent extends Component {
 
     handleToggle = () => this.props.dispatch(toggleSideMenu());
 
-    onClickComparatorButton = () => browserHistory.push('/pokemon/comparator');
-
     onClickMenuItem = (path) => {
         this.props.dispatch(hideSideMenu());
         setTimeout(() => {
@@ -29,7 +27,6 @@ class HeaderComponent extends Component {
                 onTitleTouchTap={this.onClickMenuItem.bind(this, '/')}
                 onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
                 iconElementRight={<ComparatorBadgeComponent />}
-                onRightIconButtonTouchTap={this.onClickComparatorButton.bind(this)}
             >
                 <Drawer
                     docked={false}

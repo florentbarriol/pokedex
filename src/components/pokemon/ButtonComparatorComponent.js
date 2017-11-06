@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
-import _ from 'lodash';
-import { addPokemonComparator, removePokemonComparator} from '../../actions';
+import { addPokemonComparator, removePokemonComparator } from '../../actions';
 
 
 class ButtonComparatorComponent extends Component {
@@ -38,7 +37,7 @@ ButtonComparatorComponent.PropTypes = {
 const mapStateToProps = (state, ownProps) => {
     const { id } = ownProps;
     return {
-        isPokemonInComparator: _.indexOf(state.comparator, id) > -1
+        isPokemonInComparator: state.comparator.includes(id)
     }
 }
 

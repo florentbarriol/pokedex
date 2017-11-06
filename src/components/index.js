@@ -14,6 +14,8 @@ import ButtonComparatorComponent from './pokemon/ButtonComparatorComponent';
 import HeaderComponent from './header/HeaderComponent';
 import ComparatorBadgeComponent from './header/ComparatorBadgeComponent';
 
+import ComparatorPage from './comparator/ComparatorPage';
+
 import FooterComponent from './FooterComponent';
 import SearchComponent from './SearchComponent';
 
@@ -25,5 +27,5 @@ export {
     PokemonEvolutionsComponent, PokemonResistantComponent, PokemonWeaknessComponent,
     PokemonTypesChipList, PokemonTypesComponent, ButtonComparatorComponent,
     HeaderComponent, ComparatorBadgeComponent, HomePage, AboutPage, FooterComponent,
-    SearchComponent
+    SearchComponent, ComparatorPage
 };
