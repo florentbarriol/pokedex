@@ -8,17 +8,17 @@ import headerFeature from '../';
 
 class HeaderComponent extends Component {
 
-    handleToggle = () => this.props.dispatch(headerFeature.actions.toggleSidemenu());
+    handleToggle = () => this.props.dispatch(headerFeature.actions.toggleSideMenu());
 
     onClickMenuItem = (path) => {
-        this.props.dispatch(headerFeature.actions.toggleSidemenu());
+        this.props.dispatch(headerFeature.actions.hideSideMenu());
         setTimeout(() => {
             browserHistory.push(path);
         }, 1);
     };
 
     render() {
-        const { stateAppBar } = this.props;
+        const { stateSideMenu } = this.props;
         return (
             <AppBar
                 className="appBar"
@@ -28,7 +28,7 @@ class HeaderComponent extends Component {
             >
                 <Drawer
                     docked={false}
-                    open={stateAppBar}
+                    open={stateSideMenu}
                     className="drawer"
                 >
                     <AppBar title="Pokedex" showMenuIconButton={false} />
@@ -42,7 +42,7 @@ class HeaderComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        stateAppBar: state.header.stateAppBar
+        stateSideMenu: state.header.stateSideMenu
     }
 }
 

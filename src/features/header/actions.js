@@ -1,5 +1,10 @@
 import { makeActionCreator } from '../../utils';
-import { UPDATE_STATE_APPBAR } from './constants';
+import { TOGGLE_STATE_APPBAR, HIDE_STATE_APPBAR } from './constants';
 
-export const toggleSidemenu = makeActionCreator(UPDATE_STATE_APPBAR);
+// show or hide the side menu
+export const toggleSideMenu = makeActionCreator(TOGGLE_STATE_APPBAR);
+
+// hide the side menu
+export const hideSideMenu = makeActionCreator(HIDE_STATE_APPBAR);
+
 
