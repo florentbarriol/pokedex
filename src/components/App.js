@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import headerFeature from '../features/header';
 
 import 'normalize.css';
 import '../scss/main.scss';
@@ -13,7 +13,7 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div className="app flex-container-v">
-                    <HeaderComponent />
+                    <headerFeature.components.HeaderComponent />
                     {this.props.children}
                     <FooterComponent/>
                 </div>
