@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import { connect } from 'react-router';
 
 class HeaderComponent extends Component {
 
@@ -15,7 +16,7 @@ class HeaderComponent extends Component {
 
     handleToggle = () => this.setState({ drawerOpen: !this.state.drawerOpen });
 
-    handleClose = () => this.setState({ drawerOpen: false });
+    onClickMenuItem = (path) => { this.setState({ drawerOpen: false }, () => { browserHistory.push(path); }); };
 
     render() {
         return (
@@ -32,12 +33,12 @@ class HeaderComponent extends Component {
                     className="drawer"
                 >
                     <AppBar title="Pokedex" showMenuIconButton={false} />
-                    <MenuItem onClick={() => browserHistory.push('/')}>Pokemons List</MenuItem>
-                    <MenuItem onClick={() => { browserHistory.push('/about') }}>About</MenuItem>
+                    <MenuItem onClick={this.onClickMenuItem('/')}>Pokemons List</MenuItem>
+                    <MenuItem onClick={this.onClickMenuItem('/about')}>About</MenuItem>
                 </Drawer>
             </AppBar>
         );
     }
 }
 
-export default HeaderComponent;
+export default connect()(HeaderComponent);
