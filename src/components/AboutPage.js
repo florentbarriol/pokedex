@@ -9,10 +9,12 @@ class AboutPage extends Component {
     render() {
         return (
             <main>
-                <h1>About</h1>
+                <h1>About Pokedex</h1>
                 <p>
-                    to write...
+                    This app is a simple pokedex index built with ReactJs, Redux, SCSS, Material-ui &amp; many others cool libs.
                 </p>
+                <p>All content is &copy; Nintendo, Game Freak, and The Pokémon Company.</p>
+                <p>Feel free to contact me at courrier (at) florentbarriol dot com for more.</p>
             </main>
         );
     }
