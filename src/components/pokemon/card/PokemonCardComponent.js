@@ -6,7 +6,7 @@ import * as components from '../../';
 class PokemonComponent extends Component {
 
     render() {
-        const { pokemon } = this.props;
+        const { pokemon, isComparatorView } = this.props;
         const id = pokemon && pokemon.Number ? _.toInteger(pokemon.Number) : -1;
         return (
             pokemon && id ? (
@@ -25,7 +25,7 @@ class PokemonComponent extends Component {
                             <p>{`maximum CP : ${pokemon.MaxCP}`}</p>
                             <components.PokemonResistantComponent resistant={pokemon.Resistant} />
                             <components.PokemonWeaknessComponent weakness={pokemon.Weaknesses} />
-                            <p>{pokemon.About}</p>
+                            {isComparatorView && (<p>{pokemon.About}</p>)}
                             <div><components.ButtonComparatorComponent id={id} /></div>
                         </div>
                     </article>
@@ -43,7 +43,8 @@ class PokemonComponent extends Component {
 }
 
 PokemonComponent.PropTypes = {
-    pokemon: PropTypes.object.isRequired
+    pokemon: PropTypes.object.isRequired,
+    isComparatorView: PropTypes.bool
 }
 
 export default PokemonComponent;

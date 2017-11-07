@@ -11,7 +11,7 @@ class ComparatorPage extends Component {
 
         return (
             <main>
-                <div className="grid-2 has-gutter">
+                <div className="grid-4 has-gutter">
                     {!_.isEmpty(pokemons) ? pokemons.map(p => {
                         return <components.PokemonCardComponent
                             key={_.toInteger(p.Number)}
